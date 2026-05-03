@@ -27,6 +27,7 @@ Docs: https://docs.openclaw.ai
 
 ### Fixes
 
+- Gateway/Bonjour: keep LAN multicast discovery opt-in by default while preserving explicit `openclaw plugins enable bonjour` startup, so servers that do not need LAN discovery avoid mDNS probing and watchdog churn. Refs #74209.
 - Google Meet: route stateful CLI session commands through the gateway-owned runtime so joined realtime sessions survive after the starting CLI process exits. Fixes #76344. Thanks @coltonharris-wq.
 - Memory/status: split builtin sqlite-vec store readiness from embedding-provider readiness in `memory status --deep` and `openclaw status`, so local vector-store failures no longer look like provider failures and provider failures no longer hide a healthy local vector store.
 - CLI/doctor: trust a ready gateway memory probe when CLI-side active memory backend resolution is unavailable, preventing false "No active memory plugin is registered" warnings for healthy runtime setups. Fixes #76792. Thanks @som-686.
